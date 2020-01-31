@@ -8,26 +8,30 @@ public class NumberWizard : MonoBehaviour
     [SerializeField] int min;
     [SerializeField] int max;
     [SerializeField] TextMeshProUGUI guessText;
+    [SerializeField] TextMeshProUGUI guessCountText;
     int guess; 
+    int guessCount = 0;
 
     void Start()
     {
         setNextGuess();
-        max = max + 1;
+        guessCount = 0;
     }
 
     void setNextGuess() {
-        guess = (max + min) /2; 
+        guess = Random.Range(min, max+1); 
         guessText.text = guess.ToString();
+        guessCount++;
+        guessCountText.text = $"It took me {guessCount} guesses to find your anwser!";
     }
 
     public void onHigherPressed() {
-        min = guess;
+        min = guess + 1;
         setNextGuess();
     }
 
     public void onLowerPressed() {
-        max = guess;
+        max = guess - 1;
         setNextGuess();
     }
 

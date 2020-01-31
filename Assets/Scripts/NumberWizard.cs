@@ -22,7 +22,6 @@ public class NumberWizard : MonoBehaviour
         guess = Random.Range(min, max+1); 
         guessText.text = guess.ToString();
         guessCount++;
-        guessCountText.text = $"It took me {guessCount} guesses to find your anwser!";
     }
 
     public void onHigherPressed() {
